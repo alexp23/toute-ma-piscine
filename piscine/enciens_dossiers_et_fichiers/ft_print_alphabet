@@ -1,0 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ft_print_alphabet                                  :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: apietrul <apietrul@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/08/06 22:52:37 by apietrul          #+#    #+#              #
+#    Updated: 2015/08/07 10:14:39 by apietrul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#include <unistd.h>
+
+int i = 'a';
+	
+void ft_print_alphabet(void){
+
+while (i <= 122){
+	
+	ft_putchar(i);
+	i ++;
+	
+	}
+}
+
+void	ft_putchar(char c){
+	
+
+write (1, &c, 1);	
+
+}	
+
+void main(){
+
+ft_print_alphabet();
+
+}
+
