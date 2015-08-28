@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rstr_capitalizer.c                                 :+:      :+:    :+:   */
+/*   last_word.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apietrul <apietrul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/28 11:51:32 by apietrul          #+#    #+#             */
-/*   Updated: 2015/08/28 15:28:37 by apietrul         ###   ########.fr       */
+/*   Created: 2015/08/28 13:13:41 by apietrul          #+#    #+#             */
+/*   Updated: 2015/08/28 13:59:52 by apietrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,31 @@
 
 void	ft_putchar(char c)
 {
-	write (1, &c, 1);
+	write(1, &c, 1);
 }
 
-void	ft_rstr(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
 	i = 0;
 	while (str[i])
+		i++;
+	return (i);
+}
+
+void	last_word(char *str)
+{
+	int i;
+
+	i = ft_strlen(str) - 1;
+	while (str[i] == ' ')
+		i--;
+	while (str[i] != ' ' && str[i] != 0)
+		i--;
+	i++;
+	while (str[i] && str[i] != ' ')
 	{
-		if (str[i] >= 'a' && str[i] <= 'z' && (str[i + 1] == ' ' || str[i + 1] == '\0')) 
-			str[i] = str[i] - 32;
-		else if ((str[i] >= 'A' && str[i] <= 'Z') && (str[i + 1] != ' ' || str[i + 1] != '\0'))
-			str[i] = str[i] + 32;
 		ft_putchar(str[i]);
 		i++;
 	}
@@ -35,19 +46,8 @@ void	ft_rstr(char *str)
 
 int		main(int argc, char **argv)
 {
-	int i;
-
-	i = 1;
-	if (argc < 2)
-	{
-		ft_putchar('\n');
+	if (argc != 2)
 		return (0);
-	}
-	while (i < argc)
-	{
-		ft_rstr(argv[i]);
-		ft_putchar('\n');
-		i++;
-	}
+	last_word(argv[1]);
 	return (0);
 }
